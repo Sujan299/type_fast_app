@@ -19,7 +19,7 @@ const LoginForm = () => {
     const handleSubmit = async(e)=>{
         e.preventDefault();
         try{
-            const response = await axios.post("http://localhost:3000/auth/login", formData,
+            const response = await axios.post("https://type-fast-backend.onrender.com/auth/login", formData,
                 {
                     headers: {
                       'Content-Type': 'application/x-www-form-urlencoded',

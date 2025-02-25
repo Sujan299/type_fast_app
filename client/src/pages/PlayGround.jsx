@@ -3,7 +3,7 @@ import useAccess from '../utils/accessComp'
 import socket from '../socket/socket'
 import { io } from "socket.io-client";
 const PlayGround = () => {
-    const [access] = useAccess("http://localhost:3000/room/playground");
+    const [access] = useAccess("https://type-fast-backend.onrender.com/room/playground");
     const [data, setData] = useState({});
     const [users, setUsers] = useState([]);
     console.log(data)

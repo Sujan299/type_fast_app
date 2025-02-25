@@ -9,7 +9,7 @@ const PublicTyping = ({ func }) => {
     const socketRef = useRef(null); // Store socket reference
 
     useEffect(() => {
-        socketRef.current = io("http://localhost:3000");
+        socketRef.current = io("https://type-fast-backend.onrender.com");
 
         socketRef.current.on("connect", () => {
             console.log(`User: ${socketRef.current.id} connected successfully!`);

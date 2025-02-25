@@ -7,7 +7,7 @@ const Home = () => {
   const [liveResults, setLiveResults] = useState({})
   const [testContent, setTestContent] = useState("")
   useEffect(() => { 
-    const socket = io("http://localhost:3000")
+    const socket = io("https://type-fast-backend.onrender.com")
     socket.on("connect", () => {
       console.log(`User: ${socket.id} connected successfully!`);
       socket.emit("askingForTest")

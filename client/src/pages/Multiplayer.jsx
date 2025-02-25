@@ -5,7 +5,7 @@ import { useSelector } from 'react-redux'
 import {useNavigate} from 'react-router-dom'
 const Multiplayer = () => {
   const navigate = useNavigate()
-  const [access] = useAccess("http://localhost:3000/room");
+  const [access] = useAccess("https://type-fast-backend.onrender.com/room");
   const user = useSelector((state) => state.userInformation.user);
   const [roomName, setRoomName] = useState("");
   const [roomCode, setRoomCode] = useState()

@@ -1,7 +1,7 @@
 import React from 'react'
 import useAccess from '../utils/accessComp'
 const Achievement = () => {
-    const [access] = useAccess("http://localhost:3000/achivement")
+    const [access] = useAccess("https://type-fast-backend.onrender.com/achivement")
   console.log(access)
 
   return (
