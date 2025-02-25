@@ -12,7 +12,6 @@ const publicSocket = (io) => {
             socket.emit("testContent", users.get(socket.id).testContent);
         })
         socket.on("startTime", () => {
-            console.log("Hello world")
             console.log(`${socket.id} started test...`);
             const user = users.get(socket.id);
             user.startTime = Date.now();

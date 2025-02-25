@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import Hero from '../components/Hero';
-import PublicTyping from '../components/publicTyping';
+import PublicTyping from '../components/PublicTyping'
 
 const Home = () => {
     const [startTyping, setStartTyping] = useState(false);

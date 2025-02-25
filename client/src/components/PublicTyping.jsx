@@ -5,6 +5,7 @@ const PublicTyping = ({ func }) => {
     const [typedText, setTypedText] = useState("");
     const [liveResults, setLiveResults] = useState({});
     const [testContent, setTestContent] = useState("");
+    const [start, setStart] = useState(false)
     const socketRef = useRef(null); // Store socket reference
 
     useEffect(() => {
@@ -33,6 +34,7 @@ const PublicTyping = ({ func }) => {
 
     const startTyping = () => {
         socketRef.current.emit("startTime", "Start time");
+        setStart(true)
     };
 
     const typing = (e) => {
@@ -49,34 +51,34 @@ const PublicTyping = ({ func }) => {
                 </svg>
                 Back
             </button>
-            <div>{testContent}</div>
+            <div className='my-4 text-xl'>{testContent}</div>
             <div className="my-8">
-                <textarea 
-                    onChange={typing} 
-                    value={typedText} 
-                    className="w-full h-[20vh] p-3 bg-gray-900 focus:outline-none focus:ring-2 rounded-md shadow-sm resize-none" 
+                <textarea
+                    onChange={typing}
+                    value={typedText}
+                    className="w-full h-[20vh] p-3 bg-gray-900 focus:outline-none focus:ring-2 rounded-md shadow-sm resize-none"
                     placeholder="Type here..."
                 />
             </div>
-            <button className="btn btn-wide" onClick={startTyping}>Start</button>
+            <button className={`btn btn-wide`} onClick={startTyping} disabled={start}>Start</button>
 
             {Object.entries(liveResults).map(([userId, data]) => (
                 <div className="flex w-full flex-col lg:flex-row mt-10 h-[35vh]" key={userId}>
-                    <div className="card bg-base-300 rounded-box grid h-full flex-1 place-items-center grid-cols-2 gap-4">
+                    <div className="card bg-base-300 rounded-box grid h-full flex-1 place-items-center grid-cols-2 gap-4 p-6 shadow-lg">
                         <div className="text-4xl flex flex-col gap-4 items-center">
-                            <h2 className="underline">Accuracy</h2>
-                            <p>{data.accuracy}</p>
+                            <h2 className="underline font-semibold text-primary">Accuracy</h2>
+                            <p className="text-secondary font-bold">{data.accuracy}%</p>
                         </div>
                         <div className="text-4xl flex flex-col gap-4 items-center">
-                            <h2 className="underline">WPM</h2>
-                            <p>{data.wpm}</p>
+                            <h2 className="underline font-semibold text-primary">WPM</h2>
+                            <p className="text-secondary font-bold">{data.wpm}</p>
                         </div>
                     </div>
                     <div className="divider lg:divider-horizontal">&</div>
-                    <div className="card bg-base-300 rounded-box grid h-full flex-1 place-items-center grid-cols-1 gap-4">
+                    <div className="card bg-base-300 rounded-box grid h-full flex-1 place-items-center grid-cols-1 gap-4 p-6 shadow-lg">
                         <div className="text-6xl flex flex-col gap-4 items-center">
-                            <h2 className="underline">Net Speed</h2>
-                            <p>{data.wpm * data.accuracy}</p>
+                            <h2 className="underline font-semibold text-primary">Net Speed</h2>
+                            <p className="text-secondary font-bold">{(data.wpm * data.accuracy) / 100}</p>
                         </div>
                     </div>
                 </div>
