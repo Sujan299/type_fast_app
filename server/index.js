@@ -10,7 +10,7 @@ const authSocketUser = require("./middlewares/authSocketUser")
 const server = createServer(app);
 const io = new Server(server, {
     cors: {
-        origin: "http://localhost:5173",
+        origin: "https://type-fast-app.onrender.com/",
         method: ["GET", "POST"],
         credentials: true
     }
@@ -24,7 +24,7 @@ privateIo.use(authSocketUser);  // Apply authentication only here
 handleSocketEvents(privateIo);  //
 
 app.use(cors({
-    origin: "http://localhost:5173",
+    origin: "https://type-fast-app.onrender.com/",
     method: ["GET", "POST"],
     credentials: true
 }))
